@@ -32,7 +32,7 @@ window.onload = (event) => {
           $("#indexAfterLogin").append(`<h1>Welcome ${username}!</h1>`);
           $("#indexAfterLogin").show();
           $("#newComment").show();
-          $("#feedbackstuff").show();
+          
    
 
         } catch (error) {
@@ -40,7 +40,7 @@ window.onload = (event) => {
         }return; //if token is not present, these commands will run
       }else if(token == null) {
         $("#newComment").hide();
-        $("#feedbackstuff").hide();
+       
    
 
       }

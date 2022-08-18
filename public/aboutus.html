@@ -26,22 +26,14 @@
 <div id="feedbackstuff">  <!-- will only show if user is logged in, checktoken,js for code -->
         <h1 style="text-align: center; padding-top: 50px;padding-bottom:30px;font-family: Courier, monospace; color: #BEB2C8;">Any Queries? Write it here!</h1>
 
-        <form style="padding-right:400px;padding-left:400px;">
-        
-            <div class="form-group" style="color: aliceblue;" >
-              <label for="content">Translate Text To Speech!</label>
-              <textarea class="form-control" id="text" row="5"></textarea>
-            </div>
-             <div>
-                <select id="voice">
-                    <option>Joanna</option>
-                    <option>Matthew</option>
-                </select>
-            </div>
-            <div style="text-align: center;" id="play-button">
-            <button style="background-color:#BEB2C8 ;color: aliceblue ;margin-bottom:100px; padding-right:30px;padding-left:30px;"  >Play</button>
-        </div></div>
-        </form>
+    <textarea id="text"></textarea>
+    
+    <select id="voice">
+        <option>Joanna</option>
+        <option>Matthew</option>
+    </select>
+    
+    <button id="play-button">Play</button>
   
 
 </div>

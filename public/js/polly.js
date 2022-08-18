@@ -6,7 +6,7 @@
     elemPlayButton.addEventListener("click",function(){
         
         let url = "https://u74c2txuf1.execute-api.us-east-1.amazonaws.com/default/polly";
-        url += "?voice=" + encodeURIComponent(elemVoice.value);
+        url += "&voice=" + encodeURIComponent(elemVoice.value);
         url += "&text=" + encodeURIComponent(elemText.value);
 
         const elemAudio = document.createElement("AUDIO");
@@ -16,4 +16,4 @@
         elemAudio.play();
 
     });
-});
+}();

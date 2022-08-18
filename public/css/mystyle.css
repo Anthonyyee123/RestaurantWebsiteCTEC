@@ -1,0 +1,172 @@
+footer {
+    font-family: Courier, monospace;
+    
+    color: white;
+}
+
+body {
+
+    background-color: #BEB2C8;
+}
+
+div{
+    font-family: Courier, monospace;
+    color :#586F7C;
+}
+.edit {
+    float: right;
+    padding-right: 10px;
+}
+
+.active {
+    color : #A689BD;
+}
+
+nav {
+    font-family: Courier, monospace;
+    background-color: #586F7C;
+    color :#BEB2C8;
+    
+}
+
+.nav-item .nav-link{
+    color:#bca2d1
+}
+
+#topnavlink .nav-item .nav-link{
+  color:#586F7C
+}
+
+#topnavlink .nav-item:hover .nav-link {
+    color: rgb(255, 250, 255);
+}
+
+.nav-item.active .nav-link,
+.nav-item:hover .nav-link {
+    color: rgb(255, 250, 255);
+}
+
+nav li {
+   padding-right: 30px;
+  }
+
+
+.dropdown {
+    width: 150px;
+}
+
+.zoom {
+    padding: 55px;
+    transition: transform .2s; /* Animation */
+    width: 200px;
+    height: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0px;
+}
+  
+  .zoom:hover {
+    transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  }
+
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
+    padding: 16px;
+    text-align: center;
+    background-color: #ffffff;
+  }
+  .row {margin: 0 -5px;}
+
+  .p{
+      font-family:Courier, monospace ;
+  }
+
+  .form-group {
+    margin-bottom: 30px;
+}
+
+#newComment{
+    text-align: left;
+}
+
+.zoom1 {
+    padding: 50px;
+    transition: transform .2s; /* Animation */
+    width: 250px;
+    height: 300px;
+  
+}
+  
+  .zoom1:hover {
+    transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  }
+
+
+  .transition-fade {
+    transition: 0.4s;
+    opacity: 1;
+  }
+  
+  html.is-animating .transition-fade {
+    opacity: 0;
+  }
+
+ 
+
+  #reg.text{
+    font-family: Courier, monospace ;
+    font-style:italic;
+  }
+
+  input[type=text] {
+    border: 2px solid rgb(103, 104, 122);
+    border-radius: 4px;
+  }
+  input[type=text]:focus {
+    border: 3px solid #555;
+  }
+
+  #registeruser{
+    margin:auto;
+    display:block;
+  }
+
+  input, label {
+    display:inline-block;
+}
+
+#topnav2{
+  background-color :#BEB2C8;
+;
+}
+
+#colour2{
+  background-color: #586F7C;
+}
+
+#restaurantsTable{
+  padding-left: 200px;
+  padding-bottom:50px;
+  padding-right: 200px;
+  height: 100px;
+}
+
+input[type=radio] {
+  width: 20px;
+  height: 20px;
+}
+
+td {
+  width: 150px;
+  text-align: center;
+
+  padding: 15px;
+}
+
+#grad {
+  background-image: linear-gradient(to bottom right, rgb(216, 165, 209), rgb(48, 4, 70));
+}
+
+#grad1 {
+  background-image: linear-gradient(to bottom right, rgb(167, 167, 167), rgb(87, 93, 145));
+}

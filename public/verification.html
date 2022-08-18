@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="css/mystyle.css" />
+
+    <title>verification</title>
+  </head>
+  <script>
+      function verifyUser(){
+          var verifyRequest = new XMLHttpRequest();
+          var payload = { 
+              //parseInt to convert string to int
+              verification_code : parseInt(document.getElementById('verification_code').value)
+             }
+             console.log(payload);
+          /* put request since updating user verification state */
+          verifyRequest.open("PUT", "/verifyUser", true);
+          verifyRequest.setRequestHeader("Content-Type","application/json");
+          verifyRequest.setRequestHeader("Authorization", "Bearer " + localStorage.getItem("token"));
+          verifyRequest.send(JSON.stringify(payload));
+
+          verifyRequest.onload = function() {
+              if (verifyRequest.status == 200) { //will check if the code is the same
+                  response = JSON.parse(verifyRequest.responseText);
+                  if(response.result === "verified"){
+                      alert("Verification Successful");
+                      //redirect to main page
+                      window.location.href = "index.html";
+                  }
+                  else{
+                      alert(`Verification Failed, cause was ${response.result}`);
+                  }
+              }
+          };
+      }
+  </script>
+  <body>
+    <div w3-include-html="topnav.html"></div>
+    <div class="d-flex flex-column container-fluid text-center align-items-center" style="margin-top: 200px; ">
+        <h3 style="font-weight: bold; margin-bottom: 50px;">Please input the verification code you received from the email here</h3>
+        <input style="margin-bottom: 50px;" id="verification_code" type="number">
+        <button type="button" onclick="verifyUser()">Submit Code</button>
+    </div>
+  </body>
+  <script src="https://www.w3schools.com/lib/w3.js"></script>
+  <script>
+    //to bring in other HTML on the fly into this page
+    w3.includeHTML();
+  </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+  <script src="https://kit.fontawesome.com/86ec7c1143.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/reviews.js"></script>
+  <script src="js/restaurants.js"></script>
+  <script src="js/checktoken.js"></script>
+</html>

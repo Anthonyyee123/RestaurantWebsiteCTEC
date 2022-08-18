@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>ComfiEats</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/mystyle.css">
+</head>
+
+   <body onload="getRestaurantData()">
+       <div w3-include-html="topnav.html"></div>
+       <main id="swup" class="transition-fade">
+       
+<div w3-include-html="restaurants-modal.html"></div>
+
+ <div >
+    <div class="container d-flex flex-column container-fluid text-center align-items-center" style="padding-top: 50px;">
+      <div id="grad1" class="card" style="border-radius: 15px; width: 700px; color: rgb(255, 255, 255);">
+        
+        <h3 id="summary"></h3>
+        <p>Sort Restaurants : </p>
+
+        <form>
+          <label class="radio-inline">
+            <input type="radio" name="optradio" onclick="showJapanesebased()" > Japanese 
+          </label>
+          <label class="radio-inline">
+            <input type="radio" name="optradio" onclick="showKoreanbased()"> Korean
+          </label>
+          <label class="radio-inline">
+            <input type="radio" name="optradio" onclick="showWesternbased()"> Western
+          </label>
+          <label class="radio-inline">
+            <input type="radio" name="optradio" onclick="showChinesebased()"> Chinese
+          </label>
+          <label class="radio-inline">
+            <input type="radio" name="optradio" onclick="showHalalbased()"> Halal
+          </label>
+          <label class="radio-inline">
+            <input type="radio" name="optradio" onclick="showPescetarianbased()"> Pescetarian
+          </label>
+          <label class="radio-inline">
+            <input type="radio" name="optradio" onclick="showVegetarianbased()"> Vegetarian
+        </form>
+          <label class="radio-inline">
+            <input type="radio" name="optradio" onclick="showall()"checked>All Cuisine
+          </label>
+        </form>
+      </div></div>
+
+        
+        <div id="restaurantsTable" class="row" style="margin-bottom: 500px;" ></div></div>
+   
+
+       <div w3-include-html="reviewsmodal.html"></div>
+       <div w3-include-html="new-review-modal.html"></div>
+       <div w3-include-html="edit-comments-modal.html"></div>
+       
+    </main>
+    
+</body>
+
+   <script src="https://www.w3schools.com/lib/w3.js"></script>
+   <script>
+       //to bring in other HTML on the fly into this page
+       w3.includeHTML();
+   </script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+   <script src="https://kit.fontawesome.com/86ec7c1143.js" ></script>
+   <script src="js/app.js"></script>
+   <script src="js/reviews.js"></script>
+   <script src="js/restaurants.js"></script>
+   <script src="js/checktoken.js"></script>
+
+   </html>

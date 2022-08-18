@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>ComfiEats</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/mystyle.css">
+
+
+</head>
+<script>
+
+  var pic, email, firstname, lastname, homeaddress, contactnumber, postalcode, token;
+
+  token = localStorage.getItem("token")
+  function sendEmail() {
+    var emailRequest = new XMLHttpRequest();
+    var payload = {
+      "email": document.getElementById('email1').value,
+      "verification_code": 2323
+    }
+    emailRequest.open("POST", "/sendVerification", true);
+    emailRequest.setRequestHeader("Content-Type", "application/json");
+    emailRequest.send(JSON.stringify(payload));
+
+  
+    emailRequest.onload = function () {
+      if (emailRequest.status == 200) {
+        console.log(emailRequest.responseText);
+        var response = JSON.parse(emailRequest.responseText);
+        console.log(response.result);
+        if (response.result == "success") {
+          alert("Email sent, follow the instructions to verify your account");
+        } else {
+          alert("Email not sent");
+        }
+      }
+    }
+
+  }
+  function update() {
+
+    var updateUser = new XMLHttpRequest();
+    updateUser.open("PUT", "/updateUser", true);
+    updateUser.setRequestHeader("Content-Type", "application/json");
+    var payload = { token: token, pic : pic, email: email, first_name: firstname, last_name: lastname, home_address: homeaddress, contact_number: contactnumber, postal_code: postalcode }
+    
+
+    updateUser.onload = function () {
+      pic = document.getElementById('profpic').src
+      email = document.getElementById('email1').value
+      firstname = document.getElementById('firstname1').value
+      lastname = document.getElementById('lastname1').value
+      homeaddress = document.getElementById('homeaddress1').value
+      contactnumber = document.getElementById('contactnumber1').value
+      postalcode = document.getElementById('postalcode1').value
+      
+    }
+    updateUser.send(JSON.stringify(payload));
+  }
+
+</script>
+
+<body id="grad">
+  <!-- Include top navigation here -->
+  <div w3-include-html="topnav.html"></div>
+
+  <div class="d-flex flex-column container-fluid text-center align-items-center"
+    style="margin-top: 100px; margin-bottom: 50px;">
+    <div class="card" style="border-radius: 15px; width: 700px; background-color: rgb(255, 255, 255);">
+      <h2 style="text-align: center;padding-top: 50px;">Profile details</h2>
+      <form id="reg" style="font-family:Courier, monospace;font-weight: bolder;margin-top: 50px;">
+
+        <div id="notVerified">
+          Your Account is not verified, please send a verification email to verify your account
+          <br><button type="button" onclick="sendEmail()">Send me email</button>
+        </div>
+        <div id="isVerified">
+          Your account is verified
+        </div>
+
+        <table class="mx-auto" style="margin-bottom: 50px;">
+          <tr>
+            <td ><img style="width:100px;" id="profpic" ></td>
+            <td><input id = "myinput" type="file" onchange="encode();"></td>
+          </tr>
+          <tr>
+            <td>Username: </td>
+            <td><input type="text" id="username1" name="username" disabled></td>
+          </tr>
+
+          <tr>
+            <td>Email: </td>
+            <td><input type="text" id="email1" name="email"></td>
+          </tr>
+
+          <tr>
+            <td>First Name: </td>
+            <td><input type="text" id="firstname1" name="firstname"></td>
+          </tr>
+
+          <tr>
+            <td>Last Name: </td>
+            <td><input type="text" id="lastname1" name="lastname"></td>
+          </tr>
+
+          <tr>
+            <td>Home Address: </td>
+            <td><input type="text" required id="homeaddress1" name="homeaddress"></td>
+          </tr>
+
+          <tr>
+            <td>Contact Number: </td>
+            <td><input type="text" id="contactnumber1" name="contactnumber"></td>
+          </tr>
+
+          <tr>
+            <td>Postal code: </td>
+            <td><input type="text" id="postalcode1" name="postalcode"></td>
+          </tr>
+    </div>
+
+
+    </table>
+
+    <p class="text-center text-muted mt-5 mb-0">Want to change your details? double-click the update button!</p>
+    <br></br>
+    <button type="button" class="btn" data-dismiss="modal" id="updateuser"
+      style="background-color:#586F7C;color: aliceblue ;margin-bottom:100px;" onClick="update()">Update</button>
+      <button type="button" class="btn" data-dismiss="modal" id="deleteuser"
+      style="background-color:#7c5858;color: aliceblue ;margin-bottom:100px;" onClick="DeactivateUser()">Delete user</button>
+    </form>
+  </div>
+
+  <script src="https://www.w3schools.com/lib/w3.js"></script>
+  <script>
+    //to bring in other HTML on the fly into this page
+    w3.includeHTML();
+  </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+  <script src="https://kit.fontawesome.com/86ec7c1143.js"></script>
+
+  <script src="js/profileload.js"></script>
+  <script src="js/checktoken.js"></script>
+
+
+</html>

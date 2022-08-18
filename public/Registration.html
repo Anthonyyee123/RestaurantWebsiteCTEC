@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>ComfiEats</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/mystyle.css">
+
+
+</head>
+<script>
+
+  var response = "";
+
+  function register() {
+    var registerUser = new Object();
+    registerUser.username = document.getElementById("username").value;
+    registerUser.email = document.getElementById('email').value;
+    registerUser.password = document.getElementById("password").value;
+    registerUser.first_name = document.getElementById("firstname").value;
+    registerUser.last_name = document.getElementById('lastname').value;
+    registerUser.gender = document.getElementById('gender').value;
+    registerUser.home_address = document.getElementById('homeaddress').value;
+    registerUser.contact_number = document.getElementById('contactnumber').value;
+    registerUser.postal_code = document.getElementById('postalcode').value;
+
+
+   if ((registerUser.password).length < 10) {
+      alert("password has to be longer than 10 characters.");
+      return false;
+    }
+
+
+
+
+    var request = new XMLHttpRequest();
+
+    request.open("POST", "/addUser", true);
+    request.setRequestHeader("Content-Type", "application/json");
+
+    //send to server 
+    request.send(JSON.stringify(registerUser));
+
+    //handles response
+    request.onload = function () {
+      console.log(request.status);
+      if (request.status !== 200) {
+        alert('error when registering')
+      }
+      else {
+        response = JSON.parse(request.responseText);
+        alert('successfully registered')
+        window.location.href = "login.html";
+      }
+
+    }
+
+
+  }
+
+  function getUserData() {
+    var request = new XMLHttpRequest();
+    user_array = [];
+    request.open('GET', "/Allusers", true);
+    //This function will be called when data returns from the web api    
+    request.onload = function () {
+      //get all the movies records into our movie array        
+      user_array = JSON.parse(request.responseText);
+      //Fetch the comments as well        
+      console.log(user_array) // output to console        
+      //call the function so as to display all movies tiles for "Now Showing" 
+    };
+
+    //This command starts the calling of the movies web api    
+    request.send();
+  }
+
+</script>
+
+<body id="grad">
+  <!-- Include top navigation here -->
+  <div w3-include-html="topnav.html"></div>
+
+  <div class="d-flex flex-column container-fluid text-center align-items-center"
+    style="margin-top: 100px; margin-bottom: 50px;">
+    <div class="card" style="border-radius: 15px; width: 700px; background-color: rgb(255, 255, 255);">
+      <h2 style="text-align: center;padding-top: 50px;">Register</h2>
+      <form id="reg" style="font-family:Courier, monospace;font-weight: bolder;margin-top: 50px;">
+        <table class="mx-auto" style="margin-bottom: 50px;">
+          <tr>
+            <td>Username: </td>
+            <td><input type="text" id="username" name="username"></td>
+          </tr>
+          <tr>
+            <td>Password: </td>
+            <td><input type="password" name="" id="password"></td>
+          </tr>
+
+          <tr>
+            <td>Email: </td>
+            <td><input type="text" id="email" name="email"></td>
+          </tr>
+
+          <tr>
+            <td>First Name: </td>
+            <td><input type="text" id="firstname" name="firstname"></td>
+          </tr>
+
+          <tr>
+            <td>Last Name: </td>
+            <td><input type="text" id="lastname" name="lastname"></td>
+          </tr>
+
+          <tr>
+            <td>Home Address: </td>
+            <td><input type="text" required id="homeaddress" name="homeaddress"></td>
+          </tr>
+
+          <tr>
+            <td>Contact Number: </td>
+            <td> <input type="text" id="contactnumber" name="contactnumber"></td>
+          </tr>
+
+          <tr>
+            <td>Postal code: </td>
+            <td> <input type="text" id="postalcode" name="postalcode"></td>
+          </tr>
+    </div>
+
+
+    </table>
+    <label for="cars">Gender:</label>
+    <select name="gender" id="gender">
+      <option value="-">-</option>
+      <option value="female">Female</option>
+      <option value="male">Male</option>
+    </select>
+    <p class="text-center text-muted mt-5 mb-0">Already own an account? <a href="login.html"
+        class="fw-bold text-body"><u>Login here</u></a></p>
+    <br></br>
+    <button type="button" class="btn" data-dismiss="modal" id="registeruser"
+      style="background-color:#586F7C;color: aliceblue ;margin-bottom:100px;" onClick="register()">Register</button>
+    </form>
+  </div>
+
+</body>
+<script src="https://www.w3schools.com/lib/w3.js"></script>
+<script>
+  //to bring in other HTML on the fly into this page
+  w3.includeHTML();
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<script src="https://kit.fontawesome.com/86ec7c1143.js"></script>
+<script src="js/app.js"></script>
+<script src="js/reviews.js"></script>
+<script src="js/restaurants.js"></script>
+<script src="js/checktoken.js"></script>
+
+
+</html>

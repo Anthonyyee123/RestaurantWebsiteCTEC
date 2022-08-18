@@ -40,9 +40,6 @@ app.route("/logon").post(UsersController.LogOn);
 app.route("/bookmarkrestaurant").post(BookmarkController.addBookmark); //DONE
 
 //email stuff
-app.route("/sendemail").post(UsersController.sendmail);
-app.route("/sendVerification").post(UsersController.sendVerification);
-app.route("/verifyUser").put(UsersController.verifyUser);
 
 
 //server start here

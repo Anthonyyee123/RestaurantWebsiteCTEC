@@ -43,7 +43,7 @@ app.route("/bookmarkrestaurant").post(BookmarkController.addBookmark); //DONE
 app.route("/sendemail").post(UsersController.sendmail);
 app.route("/sendVerification").post(UsersController.sendVerification);
 app.route("/verifyUser").put(UsersController.verifyUser);
-app.route("/feedbackdb").post(UsersController.feedbackStore);
+
 
 //server start here
 app.listen(8080, "ec2-3-232-21-119.compute-1.amazonaws.com"); // start the nodejs to be listening for incoming request @ port 8080

@@ -205,7 +205,6 @@ module.exports = {
   addUser,
   DeleteUserDetails,
   getuserlogs,
-  sendmail,
   getAllUsers,
   LogOn,
   getUser,

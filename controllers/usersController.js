@@ -210,5 +210,4 @@ module.exports = {
   getUser,
   updateUser,
   sendVerification,
-  verifyUser,
 };

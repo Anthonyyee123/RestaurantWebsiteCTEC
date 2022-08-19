@@ -196,20 +196,4 @@ function deleteComment(element) {
     }
 }
 
-function notification(){
 
-    var notification = new XMLHttpRequest();
-    console.log("please work")
-    notification.open("POST", "https://pxwtkpb0mh.execute-api.us-east-1.amazonaws.com/reviewnotification/user%22,true);
-    notification.setRequestHeader("Content-Type", "application/json");
-
-    restaurantname = sessionStorage.getItem("restaurantname");
-    userid = sessionStorage.getItem("token");
-    username = sessionStorage.getItem("username");
-    reviewmessage = document.getElementById("userReview").value;
-
-    var payload = {restaurantname:restaurantname,userid:userid,username:username,reviewmessage:reviewmessage};
-    console.log(payload)
-    notification.send(JSON.stringify(payload));
-
-}
